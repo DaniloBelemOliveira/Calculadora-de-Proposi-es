@@ -1,7 +1,12 @@
 import os
 
 def interface():
-    os.system('clear')
+    if(os.name == "posix"):
+        os.system('clear')
+    elif(os.name == "nt"):
+        os.system("cls")
+    else:
+        print("SO não indentificado!")
     print("Seja bem vindo a Super Calculadora Verdade!")
     valP = str(input("Digite o valor de 'p': ")).upper()
     valQ = str(input("Digite o valor de 'q': ")).upper()
@@ -24,13 +29,11 @@ def calc(expre,valP,valQ):
                 return '1'
             else:
                 return '0'
-    
     else:
         if eval(expre) == False:
             return '0'
         elif eval(expre) == True:
             return '1'
-
 
 def resolverParenteses(expre,valP,valQ):
     i = 1
@@ -107,4 +110,5 @@ def formatar(expre,valP,valQ):
 
     return newExpre
 
-print(calc("q^p > q",'V','F'))
+
+interface()
